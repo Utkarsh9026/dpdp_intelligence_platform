@@ -1,0 +1,1395 @@
+{
+ "sections": [
+  {
+   "letter": "A",
+   "title": "Notice",
+   "law": "Act s.5; R.3"
+  },
+  {
+   "letter": "B",
+   "title": "Consent",
+   "law": "Act s.4, s.6; R.3"
+  },
+  {
+   "letter": "C",
+   "title": "Legitimate uses",
+   "law": "Act s.7"
+  },
+  {
+   "letter": "D",
+   "title": "Children and persons with disability",
+   "law": "Act s.9; R.10 to R.12"
+  },
+  {
+   "letter": "E",
+   "title": "Data Principal rights and grievance",
+   "law": "Act s.8 to s.14; R.9, R.14"
+  },
+  {
+   "letter": "F",
+   "title": "Security safeguards and breach response",
+   "law": "Act s.8(4) to (6); R.6, R.7"
+  },
+  {
+   "letter": "G",
+   "title": "Retention and erasure",
+   "law": "Act s.8(7), (8); R.8"
+  },
+  {
+   "letter": "H",
+   "title": "Data Processors and third parties",
+   "law": "Act s.8(1) to (3)"
+  },
+  {
+   "letter": "I",
+   "title": "Cross-border transfer",
+   "law": "Act s.16; R.15"
+  },
+  {
+   "letter": "J",
+   "title": "Significant Data Fiduciary, only if notified",
+   "law": "Act s.10; R.13"
+  },
+  {
+   "letter": "K",
+   "title": "Governance and evidence",
+   "law": ""
+  }
+ ],
+ "checks": [
+  {
+   "id": "A1",
+   "section": "A",
+   "requirement": "A notice accompanies or precedes every request for consent: sign-up, contact and lead forms, newsletter, checkout, careers/application forms, chat, demo requests",
+   "source": "Act s.5(1)",
+   "basis": "Act",
+   "risk": "H"
+  },
+  {
+   "id": "A2",
+   "section": "A",
+   "requirement": "Notice contains an itemised description of the personal data collected, not a vague line such as 'information you provide'",
+   "source": "R.3(b)(i)",
+   "basis": "Rules",
+   "risk": "H"
+  },
+  {
+   "id": "A3",
+   "section": "A",
+   "requirement": "Notice states each specified purpose and a specific description of the goods, services or uses that the processing enables",
+   "source": "Act s.5(1)(i); R.3(b)(ii)",
+   "basis": "Act + Rules",
+   "risk": "H"
+  },
+  {
+   "id": "A4",
+   "section": "A",
+   "requirement": "Notice is in clear, plain language and understandable on its own, not buried in terms and conditions",
+   "source": "R.3(a), R.3(b)",
+   "basis": "Rules",
+   "risk": "M"
+  },
+  {
+   "id": "A5",
+   "section": "A",
+   "requirement": "Notice gives the communication link to the website or app and describes the means to withdraw consent, with ease comparable to giving it",
+   "source": "R.3(c)(i)",
+   "basis": "Rules",
+   "risk": "H"
+  },
+  {
+   "id": "A6",
+   "section": "A",
+   "requirement": "Notice says how to exercise rights (access, correction, erasure, grievance, nomination)",
+   "source": "Act s.5(1)(ii); R.3(c)(ii)",
+   "basis": "Act + Rules",
+   "risk": "H"
+  },
+  {
+   "id": "A7",
+   "section": "A",
+   "requirement": "Notice says how to complain to the Data Protection Board",
+   "source": "Act s.5(1)(iii); R.3(c)(iii)",
+   "basis": "Act + Rules",
+   "risk": "H"
+  },
+  {
+   "id": "A8",
+   "section": "A",
+   "requirement": "Data Principal can access the notice and consent request in English or any Eighth Schedule language (language switcher present and working)",
+   "source": "Act s.5(3), s.6(3)",
+   "basis": "Act",
+   "risk": "M"
+  },
+  {
+   "id": "A9",
+   "section": "A",
+   "requirement": "Users who consented before commencement have been given a notice as soon as reasonably practicable; processing may continue until withdrawal",
+   "source": "Act s.5(2)",
+   "basis": "Act",
+   "risk": "M"
+  },
+  {
+   "id": "A10",
+   "section": "A",
+   "requirement": "Every version of the notice is retained and dated",
+   "source": "Supports the burden of proof in s.6(10)",
+   "basis": "Good to have",
+   "risk": "M"
+  },
+  {
+   "id": "A11",
+   "section": "A",
+   "requirement": "Privacy notice is linked prominently on every page (footer) and at every collection point",
+   "source": "Read with R.9 and R.14 publication duties",
+   "basis": "Good to have",
+   "risk": "M"
+  },
+  {
+   "id": "B1",
+   "section": "B",
+   "requirement": "Each processing activity rests on valid consent or a certain legitimate use under s.7, and the purpose is not forbidden by law",
+   "source": "Act s.4",
+   "basis": "Act",
+   "risk": "H"
+  },
+  {
+   "id": "B2",
+   "section": "B",
+   "requirement": "Consent is given by a clear affirmative action: no pre-ticked boxes, no 'by continuing to browse you agree'",
+   "source": "Act s.6(1)",
+   "basis": "Act",
+   "risk": "H"
+  },
+  {
+   "id": "B3",
+   "section": "B",
+   "requirement": "Consent is specific and unconditional: a separate choice for each purpose; marketing not bundled with service or terms acceptance; service not refused for declining unnecessary consent",
+   "source": "Act s.6(1)",
+   "basis": "Act",
+   "risk": "H"
+  },
+  {
+   "id": "B4",
+   "section": "B",
+   "requirement": "Only the data necessary for the specified purpose is collected",
+   "source": "Act s.6(1) and illustration",
+   "basis": "Act",
+   "risk": "H"
+  },
+  {
+   "id": "B5",
+   "section": "B",
+   "requirement": "Consent request is in clear plain language and carries the contact details of the DPO, or of another person authorised to answer the Data Principal",
+   "source": "Act s.6(3)",
+   "basis": "Act",
+   "risk": "M"
+  },
+  {
+   "id": "B6",
+   "section": "B",
+   "requirement": "No term that waives a statutory right, for example the right to complain to the Board (such a term is invalid)",
+   "source": "Act s.6(2)",
+   "basis": "Act",
+   "risk": "M"
+  },
+  {
+   "id": "B7",
+   "section": "B",
+   "requirement": "Withdrawal is possible at any time and is as easy as giving consent (same number of clicks, equal prominence: footer link, account setting, unsubscribe)",
+   "source": "Act s.6(4); R.3(c)(i)",
+   "basis": "Act + Rules",
+   "risk": "H"
+  },
+  {
+   "id": "B8",
+   "section": "B",
+   "requirement": "On withdrawal, processing stops within a reasonable time, including at Data Processors, unless law requires retention",
+   "source": "Act s.6(6)",
+   "basis": "Act",
+   "risk": "H"
+  },
+  {
+   "id": "B9",
+   "section": "B",
+   "requirement": "Consent record is kept: who, when, which purposes, which notice version, which channel; the Data Fiduciary must be able to prove notice and consent",
+   "source": "Act s.6(10)",
+   "basis": "Act",
+   "risk": "H"
+  },
+  {
+   "id": "B10",
+   "section": "B",
+   "requirement": "Consent through a registered Consent Manager is accepted and supported (optional for the Data Principal; relevant from Nov 2026)",
+   "source": "Act s.6(7) to (9); R.4",
+   "basis": "Act + Rules",
+   "risk": "L"
+  },
+  {
+   "id": "B11",
+   "section": "B",
+   "requirement": "Cookie and tracker banner: Reject All with equal prominence to Accept All; granular categories; no non-essential trackers fire before consent or after rejection",
+   "source": "Act and Rules do not mention cookies; the s.6 consent standard is applied",
+   "basis": "Good to have",
+   "risk": "H"
+  },
+  {
+   "id": "B12",
+   "section": "B",
+   "requirement": "No dark patterns: no hidden decline, nudging or confusing toggles",
+   "source": "As per the interpretation of  s.6(1) 'free' and 'unambiguous'",
+   "basis": "Good to have",
+   "risk": "M"
+  },
+  {
+   "id": "B13",
+   "section": "B",
+   "requirement": "Changed or withdrawn consent is passed on to analytics and advertising tags (for example through consent signals)",
+   "source": "Act s.4, s.6; R.3",
+   "basis": "Good to have",
+   "risk": "M"
+  },
+  {
+   "id": "C1",
+   "section": "C",
+   "requirement": "Where the site relies on voluntary provision (for example a contact form), use is limited to the purpose for which the person provided the data, and stops once she says she no longer needs the service",
+   "source": "Act s.7(a)",
+   "basis": "Act",
+   "risk": "M"
+  },
+  {
+   "id": "C2",
+   "section": "C",
+   "requirement": "Employment-related processing (careers page, employee portal) is limited to employment, protection against loss or liability, and services or benefits the employee seeks",
+   "source": "Act s.7(i)",
+   "basis": "Act",
+   "risk": "M"
+  },
+  {
+   "id": "C3",
+   "section": "C",
+   "requirement": "Disclosures required by law or court order are documented",
+   "source": "Act s.7(d), s.7(e)",
+   "basis": "Act",
+   "risk": "L"
+  },
+  {
+   "id": "D1",
+   "section": "D",
+   "requirement": "The owner has assessed whether children (under 18) may use the site, and has an age declaration or gate where they may",
+   "source": "Act s.2(f), s.9",
+   "basis": "Act",
+   "risk": "H"
+  },
+  {
+   "id": "D2",
+   "section": "D",
+   "requirement": "Verifiable consent of a parent is obtained before processing a child's data, with due diligence that the parent is an identifiable adult (reliable details held, details volunteered, or a virtual token from an authorised entity such as a Digital Locker provider)",
+   "source": "Act s.9(1); R.10",
+   "basis": "Act + Rules",
+   "risk": "H"
+  },
+  {
+   "id": "D3",
+   "section": "D",
+   "requirement": "For a person with disability who has a lawful guardian, the guardian's appointment by a court, designated authority or local level committee is verified",
+   "source": "Act s.9(1); R.11",
+   "basis": "Act + Rules",
+   "risk": "M"
+  },
+  {
+   "id": "D4",
+   "section": "D",
+   "requirement": "No tracking, behavioural monitoring or targeted advertising directed at children (ad pixels and profiling are not served to minors)",
+   "source": "Act s.9(3)",
+   "basis": "Act",
+   "risk": "H"
+  },
+  {
+   "id": "D5",
+   "section": "D",
+   "requirement": "No processing likely to harm a child's well-being",
+   "source": "Act s.9(2)",
+   "basis": "Act",
+   "risk": "H"
+  },
+  {
+   "id": "D6",
+   "section": "D",
+   "requirement": "Where a Fourth Schedule exemption is claimed (clinical establishments, educational institutions, crèches, child transport, email-only accounts, age confirmation and so on), its conditions are documented",
+   "source": "R.12; Fourth Sch.",
+   "basis": "Rules",
+   "risk": "M"
+  },
+  {
+   "id": "E1",
+   "section": "E",
+   "requirement": "The means for making rights requests (form, email or portal) are published prominently on the website or app",
+   "source": "R.14(1)(a)",
+   "basis": "Rules",
+   "risk": "H"
+  },
+  {
+   "id": "E2",
+   "section": "E",
+   "requirement": "The particulars needed to identify the requester (username or other identifier) are published",
+   "source": "R.14(1)(b)",
+   "basis": "Rules",
+   "risk": "M"
+  },
+  {
+   "id": "E3",
+   "section": "E",
+   "requirement": "Business contact information of the DPO (if applicable) or another person who can answer questions is published prominently, and repeated in every response to a rights communication",
+   "source": "Act s.8(9); R.9",
+   "basis": "Act + Rules",
+   "risk": "H"
+  },
+  {
+   "id": "E4",
+   "section": "E",
+   "requirement": "A grievance redressal mechanism exists, and the time taken to respond is published and does not exceed 90 days",
+   "source": "Act s.8(10), s.13; R.14(3)",
+   "basis": "Act + Rules",
+   "risk": "H"
+  },
+  {
+   "id": "E5",
+   "section": "E",
+   "requirement": "Process exists to give a summary of the personal data processed, the processing activities, and the identities of other Data Fiduciaries and Data Processors with whom data is shared",
+   "source": "Act s.11",
+   "basis": "Act",
+   "risk": "M"
+  },
+  {
+   "id": "E6",
+   "section": "E",
+   "requirement": "Process exists for correction, completion, updating and erasure on request, unless retention is needed for the specified purpose or by law",
+   "source": "Act s.12",
+   "basis": "Act",
+   "risk": "H"
+  },
+  {
+   "id": "E7",
+   "section": "E",
+   "requirement": "Data Principals can nominate another person to act on death or incapacity",
+   "source": "Act s.14; R.14(4)",
+   "basis": "Act + Rules",
+   "risk": "M"
+  },
+  {
+   "id": "E8",
+   "section": "E",
+   "requirement": "Internal workflow: ticketing, identity verification and deadline tracking for requests",
+   "source": "Act s.8 to s.14; R.9, R.14",
+   "basis": "Good to have",
+   "risk": "M"
+  },
+  {
+   "id": "F1",
+   "section": "F",
+   "requirement": "HTTPS on every page and form, valid certificate, no mixed content",
+   "source": "R.6(1)(a), (g) (indicator); IP",
+   "basis": "Statutory indicator + Good to have",
+   "risk": "H"
+  },
+  {
+   "id": "F2",
+   "section": "F",
+   "requirement": "Personal data secured by encryption, obfuscation, masking or virtual tokens",
+   "source": "R.6(1)(a)",
+   "basis": "Rules",
+   "risk": "H"
+  },
+  {
+   "id": "F3",
+   "section": "F",
+   "requirement": "Access to computer resources is controlled",
+   "source": "R.6(1)(b)",
+   "basis": "Rules",
+   "risk": "H"
+  },
+  {
+   "id": "F4",
+   "section": "F",
+   "requirement": "Logging, monitoring and review of access to personal data to detect and investigate unauthorised access",
+   "source": "R.6(1)(c)",
+   "basis": "Rules",
+   "risk": "H"
+  },
+  {
+   "id": "F5",
+   "section": "F",
+   "requirement": "Backups and measures for continued processing if confidentiality, integrity or availability is compromised",
+   "source": "R.6(1)(d)",
+   "basis": "Rules",
+   "risk": "M"
+  },
+  {
+   "id": "F6",
+   "section": "F",
+   "requirement": "Logs and personal data retained for one year for detection, investigation and remediation, unless other law requires otherwise",
+   "source": "R.6(1)(e)",
+   "basis": "Rules",
+   "risk": "M"
+  },
+  {
+   "id": "F7",
+   "section": "F",
+   "requirement": "Contract with each Data Processor contains reasonable security safeguards",
+   "source": "R.6(1)(f)",
+   "basis": "Rules",
+   "risk": "H"
+  },
+  {
+   "id": "F8",
+   "section": "F",
+   "requirement": "Appropriate technical and organisational measures to ensure the safeguards are observed",
+   "source": "Act s.8(4); R.6(1)(g)",
+   "basis": "Act + Rules",
+   "risk": "M"
+  },
+  {
+   "id": "F9",
+   "section": "F",
+   "requirement": "Web hygiene indicators: Secure and HttpOnly cookie flags, security headers, exposed directories and backup files, exposed admin panels, outdated CMS or plugins, exposed API keys, forms posting over HTTP",
+   "source": "Good to have",
+   "basis": "Good to have",
+   "risk": "M"
+  },
+  {
+   "id": "F10",
+   "section": "F",
+   "requirement": "Breach plan: each affected Data Principal is told without delay of the nature, extent and timing, relevant consequences, mitigation, safety steps she can take, and a contact person",
+   "source": "Act s.8(6); R.7(1)",
+   "basis": "Act + Rules",
+   "risk": "H"
+  },
+  {
+   "id": "F11",
+   "section": "F",
+   "requirement": "Board is told without delay (description, nature, extent, timing, location, likely impact), then within 72 hours (or longer if the Board allows in writing) with detailed information, causes, mitigation, findings on the person responsible, remedial steps and a report on notices given to Data Principals",
+   "source": "Act s.8(6); R.7(2)",
+   "basis": "Act + Rules",
+   "risk": "H"
+  },
+  {
+   "id": "G1",
+   "section": "G",
+   "requirement": "Retention period is defined for each purpose; data is erased when consent is withdrawn or the purpose is no longer served, unless law requires retention; Data Processors are made to erase too",
+   "source": "Act s.8(7)",
+   "basis": "Act",
+   "risk": "H"
+  },
+  {
+   "id": "G2",
+   "section": "G",
+   "requirement": "For e-commerce entities (2 crore or more users), online gaming intermediaries (50 lakh or more) and social media intermediaries (2 crore or more): erase after three years of inactivity (except account and virtual-token access), with at least 48 hours' advance notice",
+   "source": "Act s.8(8); R.8(1), (2); Third Sch.",
+   "basis": "Act + Rules",
+   "risk": "M"
+  },
+  {
+   "id": "G3",
+   "section": "G",
+   "requirement": "Personal data, traffic data and processing logs are kept for at least one year for the Seventh Schedule purposes, then erased unless other law requires more; reconcile this with erasure requests",
+   "source": "R.8(3)",
+   "basis": "Rules",
+   "risk": "M"
+  },
+  {
+   "id": "G4",
+   "section": "G",
+   "requirement": "Website data stores (form submissions, email inbox, CRM, analytics, chat transcripts) are included in the retention schedule",
+   "source": "Good to have",
+   "basis": "Good to have",
+   "risk": "M"
+  },
+  {
+   "id": "H1",
+   "section": "H",
+   "requirement": "Inventory of third-party scripts, pixels, SDKs, embeds, fonts, CDNs, tag managers, chat, payment, maps and video",
+   "source": "Act s.8(1), (2); s.11(1)(b)",
+   "basis": "Act",
+   "risk": "H"
+  },
+  {
+   "id": "H2",
+   "section": "H",
+   "requirement": "A valid contract with each Data Processor",
+   "source": "Act s.8(2)",
+   "basis": "Act",
+   "risk": "H"
+  },
+  {
+   "id": "H3",
+   "section": "H",
+   "requirement": "Data Fiduciary remains responsible for processing done on its behalf, whatever the contract says",
+   "source": "Act s.8(1)",
+   "basis": "Act",
+   "risk": "M"
+  },
+  {
+   "id": "H4",
+   "section": "H",
+   "requirement": "Third parties acting as independent Data Fiduciaries (for example ad networks) have their own lawful basis, or the site has consent covering the disclosure",
+   "source": "Good to have",
+   "basis": "Good to have",
+   "risk": "H"
+  },
+  {
+   "id": "H5",
+   "section": "H",
+   "requirement": "Data used to decide something about a person, or disclosed to another fiduciary, is complete, accurate and consistent",
+   "source": "Act s.8(3)",
+   "basis": "Act",
+   "risk": "M"
+  },
+  {
+   "id": "I1",
+   "section": "I",
+   "requirement": "Servers and third-party endpoints outside India are identified",
+   "source": "Act s.16",
+   "basis": "Act",
+   "risk": "M"
+  },
+  {
+   "id": "I2",
+   "section": "I",
+   "requirement": "No transfer to a country the Central Government has restricted; any requirement set by general or special order under R.15 is met",
+   "source": "Act s.16(1); R.15",
+   "basis": "Act + Rules",
+   "risk": "M"
+  },
+  {
+   "id": "I3",
+   "section": "I",
+   "requirement": "Notice mentions overseas transfers",
+   "source": "Good to have",
+   "basis": "Good to have",
+   "risk": "L"
+  },
+  {
+   "id": "I4",
+   "section": "I",
+   "requirement": "Stricter sectoral localisation or transfer rules (for example RBI) are honoured",
+   "source": "Act s.16(2)",
+   "basis": "Act",
+   "risk": "M"
+  },
+  {
+   "id": "J1",
+   "section": "J",
+   "requirement": "Status checked against the notification",
+   "source": "Act s.10(1)",
+   "basis": "Act",
+   "risk": "H"
+  },
+  {
+   "id": "J2",
+   "section": "J",
+   "requirement": "DPO appointed, based in India, responsible to the board, and the grievance point of contact",
+   "source": "Act s.10(2)(a)",
+   "basis": "Act",
+   "risk": "H"
+  },
+  {
+   "id": "J3",
+   "section": "J",
+   "requirement": "Independent data auditor appointed",
+   "source": "Act s.10(2)(b)",
+   "basis": "Act",
+   "risk": "H"
+  },
+  {
+   "id": "J4",
+   "section": "J",
+   "requirement": "Data Protection Impact Assessment and audit every 12 months; report of significant observations furnished to the Board",
+   "source": "Act s.10(2)(c); R.13(1), (2)",
+   "basis": "Act + Rules",
+   "risk": "H"
+  },
+  {
+   "id": "J5",
+   "section": "J",
+   "requirement": "Due diligence that algorithmic and other technical measures do not risk Data Principals' rights",
+   "source": "R.13(3)",
+   "basis": "Rules",
+   "risk": "M"
+  },
+  {
+   "id": "J6",
+   "section": "J",
+   "requirement": "Specified personal data and its traffic data kept within India",
+   "source": "R.13(4)",
+   "basis": "Rules",
+   "risk": "H"
+  },
+  {
+   "id": "K1",
+   "section": "K",
+   "requirement": "Data inventory or record of processing mapping every website data flow",
+   "source": "Good to have  (basis for Act s.8(4))",
+   "basis": "Good to have",
+   "risk": "M"
+  },
+  {
+   "id": "K2",
+   "section": "K",
+   "requirement": "Named internal owner for privacy; DPO or contact person identified",
+   "source": "Act s.8(9); Good to have",
+   "basis": "Statutory indicator + Good to have",
+   "risk": "M"
+  },
+  {
+   "id": "K3",
+   "section": "K",
+   "requirement": "Staff trained on handling personal data and rights requests",
+   "source": "Good to have",
+   "basis": "Good to have",
+   "risk": "L"
+  },
+  {
+   "id": "K4",
+   "section": "K",
+   "requirement": "Readiness to respond to Board directions and to Government information requests",
+   "source": "Act s.27, s.36; R.23",
+   "basis": "Act + Rules",
+   "risk": "L"
+  },
+  {
+   "id": "K5",
+   "section": "K",
+   "requirement": "Awareness of the voluntary undertaking route and mediation",
+   "source": "Act s.31, s.32",
+   "basis": "Act",
+   "risk": "L"
+  }
+ ],
+ "penalties": [
+  {
+   "breach": "Failure to take reasonable security safeguards (s.8(5))",
+   "max": "₹250 crore"
+  },
+  {
+   "breach": "Failure to notify Board and affected Data Principals of a breach (s.8(6))",
+   "max": "₹200 crore"
+  },
+  {
+   "breach": "Children's data obligations (s.9)",
+   "max": "₹200 crore"
+  },
+  {
+   "breach": "Significant Data Fiduciary obligations (s.10)",
+   "max": "₹150 crore"
+  },
+  {
+   "breach": "Any other provision of the Act or Rules (notice, consent, rights, retention, processor contracts, grievance, etc.)",
+   "max": "₹50 crore"
+  },
+  {
+   "breach": "Breach of a voluntary undertaking accepted by the Board (s.32)",
+   "max": "As applicable to the original breach"
+  },
+  {
+   "breach": "Data Principal's duties (s.15)",
+   "max": "₹10,000"
+  }
+ ],
+ "questions": [
+  {
+   "id": "S1",
+   "group": "Entity and role",
+   "question": "Does the site collect or otherwise process digital personal data (forms, accounts, cookies or identifiers linked to an individual, chat, job applications, payments)?",
+   "answer_type": "Yes / No",
+   "when": "Ask upfront",
+   "effect": "No: mark most checks Not applicable and only confirm that no identifiers or trackers are set. Yes: run the full checklist.",
+   "type": "single",
+   "options": [
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "id": "S2",
+   "group": "Entity and role",
+   "question": "Is the site operated from India, or from outside India but offering goods or services to people in India?",
+   "answer_type": "Single choice: From India / From abroad, offers to India / From abroad, does not offer to India",
+   "when": "Ask upfront",
+   "effect": "Abroad and not offering to India: Act may not apply; stop and flag for legal review. Otherwise continue.",
+   "type": "single",
+   "options": [
+    "From India",
+    "From abroad, offers to India",
+    "From abroad, does not offer to India"
+   ]
+  },
+  {
+   "id": "S3",
+   "group": "Entity and role",
+   "question": "What is the owner's role for the data collected on the site?",
+   "answer_type": "Single choice: Data Fiduciary / Joint with others / Data Processor for a client",
+   "when": "Ask upfront",
+   "effect": "Processor: notice, consent and rights checks (A, B, E) become the client's responsibility, shown as 'client responsibility'; security, retention and processor-contract checks (F, G, H2) stay on. The client fiduciary remains accountable.",
+   "type": "single",
+   "options": [
+    "Data Fiduciary",
+    "Joint with others",
+    "Data Processor for a client"
+   ]
+  },
+  {
+   "id": "S4",
+   "group": "Entity and role",
+   "question": "Could children (under 18) or persons with a lawful guardian use the site?",
+   "answer_type": "Yes / No / Not sure",
+   "when": "Ask upfront",
+   "effect": "Yes or Not sure: switch on D1 to D6 at High weight.",
+   "type": "single",
+   "options": [
+    "Yes",
+    "No",
+    "Not sure"
+   ]
+  },
+  {
+   "id": "S5",
+   "group": "Entity and role",
+   "question": "Is the owner an e-commerce entity, online gaming intermediary or social media intermediary, and what is its approximate number of registered users in India?",
+   "answer_type": "Single choice + number band: under 50 lakh / 50 lakh to 2 crore / 2 crore or more",
+   "when": "Ask upfront",
+   "effect": "E-commerce or social media with 2 crore or more, or gaming with 50 lakh or more: switch on G2 (three-year inactivity erasure, 48-hour notice).",
+   "type": "single",
+   "options": [
+    "Not e-commerce, online gaming or social media",
+    "E-commerce or social media: under 2 crore users in India",
+    "E-commerce or social media: 2 crore or more users in India",
+    "Online gaming: under 50 lakh users in India",
+    "Online gaming: 50 lakh or more users in India"
+   ]
+  },
+  {
+   "id": "S6",
+   "group": "Entity and role",
+   "question": "Has the owner been notified as a Significant Data Fiduciary, or does it expect to be?",
+   "answer_type": "Yes / No / Don't know",
+   "when": "Ask upfront",
+   "effect": "Yes: switch on J1 to J6. Don't know: show J1 as an open item.",
+   "type": "single",
+   "options": [
+    "Yes",
+    "No",
+    "Don't know"
+   ]
+  },
+  {
+   "id": "S7",
+   "group": "Entity and role",
+   "question": "Is any processing excluded (purely personal or domestic use, or data the principal herself made public)?",
+   "answer_type": "Yes / No",
+   "when": "Ask upfront",
+   "effect": "Yes: record which processing and exclude it from checks, with a note.",
+   "type": "single",
+   "options": [
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "id": "S8",
+   "group": "Entity and role",
+   "question": "Is the owner relying on any exemption?",
+   "answer_type": "Multi-select: none / enforcing a legal claim / court, tribunal or regulatory function / offence prevention or investigation / foreign data processed under a foreign contract / merger or restructuring / loan-default tracing / research, archiving or statistics / State instrumentality / start-up exemption",
+   "when": "Ask upfront",
+   "effect": "Any selection: flag the exempt provisions for legal review before the tool relaxes them. The exemption applies only if notified; do not relax any check.",
+   "type": "multi",
+   "options": [
+    "none",
+    "enforcing a legal claim",
+    "court, tribunal or regulatory function",
+    "offence prevention or investigation",
+    "foreign data processed under a foreign contract",
+    "merger or restructuring",
+    "loan-default tracing",
+    "research, archiving or statistics",
+    "State instrumentality",
+    "start-up exemption"
+   ]
+  },
+  {
+   "id": "S9",
+   "group": "Entity and role",
+   "question": "Which sector does the owner operate in?",
+   "answer_type": "Multi-select: banking and finance / insurance / health / education or edtech / e-commerce / gaming / social media / telecom / HR or staffing / SaaS or IT services / media / government / other",
+   "when": "Ask upfront",
+   "effect": "Sets sector-law prompts (stricter localisation or transfer rules), the Fourth Schedule children's exemptions and the Third Schedule classes; raises weight on F and I for finance and health.",
+   "type": "multi",
+   "options": [
+    "banking and finance",
+    "insurance",
+    "health",
+    "education or edtech",
+    "e-commerce",
+    "gaming",
+    "social media",
+    "telecom",
+    "HR or staffing",
+    "SaaS or IT services",
+    "media",
+    "government",
+    "other"
+   ]
+  },
+  {
+   "id": "S10",
+   "group": "Entity and role",
+   "question": "Is the site run by the State or an instrumentality, or used to provide a subsidy, benefit, service, certificate, licence or permit?",
+   "answer_type": "Yes / No",
+   "when": "Ask upfront",
+   "effect": "Yes: use the State-processing standards (Second Schedule) instead of the standard consent checks; flag for legal review.",
+   "type": "single",
+   "options": [
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "id": "S11",
+   "group": "Entity and role",
+   "question": "Does the site belong to a group, with several legal entities, domains or microsites sharing one notice?",
+   "answer_type": "Yes / No",
+   "when": "Ask upfront",
+   "effect": "Yes: ask which entity is the Data Fiduciary for each domain, and add all domains to the crawl.",
+   "type": "single",
+   "options": [
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "id": "S12",
+   "group": "Entity and role",
+   "question": "Roughly how many individuals' data does the owner hold, and is any of it financial, health, location, biometric or government-ID data?",
+   "answer_type": "Number band + multi-select",
+   "when": "Ask upfront",
+   "effect": "No legal threshold. Used to weight risk: larger volumes and sensitive categories raise the weight of F, G and J.",
+   "type": "multi",
+   "options": [
+    "Under 10,000 individuals",
+    "10,000 to 1 lakh",
+    "Over 1 lakh",
+    "Financial data",
+    "Health data",
+    "Location data",
+    "Biometric data",
+    "Government ID data"
+   ]
+  },
+  {
+   "id": "S13",
+   "group": "Collection and data",
+   "question": "Which collection points does the site have?",
+   "answer_type": "Multi-select: contact form / lead or demo form / newsletter / account or login / checkout or payment / careers or job application / chat or chatbot / support ticket / event or webinar registration / survey / file upload / click-to-chat or call-back / comments or reviews / referral",
+   "when": "Ask after detection (scanner pre-fills detected forms; owner confirms and adds missing ones)",
+   "effect": "Each collection point becomes a separate test target for A1, B2, B3, B4 and B7.",
+   "type": "multi",
+   "options": [
+    "contact form",
+    "lead or demo form",
+    "newsletter",
+    "account or login",
+    "checkout or payment",
+    "careers or job application",
+    "chat or chatbot",
+    "support ticket",
+    "event or webinar registration",
+    "survey",
+    "file upload",
+    "click-to-chat or call-back",
+    "comments or reviews",
+    "referral"
+   ]
+  },
+  {
+   "id": "S14",
+   "group": "Collection and data",
+   "question": "Does the site have a user account or login area?",
+   "answer_type": "Yes / No",
+   "when": "Ask after detection (login form found)",
+   "effect": "Yes: switch on withdrawal and rights checks inside the account (B7, E2, E7), and the inactivity notice if S5 applies. Ask for test credentials (S47).",
+   "type": "single",
+   "options": [
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "id": "S15",
+   "group": "Collection and data",
+   "question": "Does the site collect data of job applicants or employees?",
+   "answer_type": "Yes / No",
+   "when": "Ask after detection (careers page found)",
+   "effect": "Yes: switch on C2 and check the notice covers applicant data and its retention.",
+   "type": "single",
+   "options": [
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "id": "S16",
+   "group": "Collection and data",
+   "question": "Is any data first collected offline (events, call centre, paper forms) and then entered on the site or in linked systems?",
+   "answer_type": "Yes / No",
+   "when": "Ask upfront",
+   "effect": "Yes: extend A1 and E to those channels; they are covered once digitised.",
+   "type": "single",
+   "options": [
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "id": "S17",
+   "group": "Collection and data",
+   "question": "Which categories of personal data does the site collect?",
+   "answer_type": "Multi-select: name / email / phone / address / date of birth / financial / government ID / health / precise location / biometric / employment / device or online identifiers / children's data / other",
+   "when": "Ask after detection (scanner pre-fills from form fields)",
+   "effect": "Compares the list with the notice (A2) and with form fields (B4); flags any category collected but not itemised in the notice.",
+   "type": "multi",
+   "options": [
+    "name",
+    "email",
+    "phone",
+    "address",
+    "date of birth",
+    "financial",
+    "government ID",
+    "health",
+    "precise location",
+    "biometric",
+    "employment",
+    "device or online identifiers",
+    "children's data",
+    "other"
+   ]
+  },
+  {
+   "id": "S18",
+   "group": "Collection and data",
+   "question": "Does the site take payments, and through its own system or a third-party gateway?",
+   "answer_type": "Single choice: own system / third-party gateway / none",
+   "when": "Ask after detection (checkout found)",
+   "effect": "Own system: raise weight on F. Gateway: add it to the processor inventory (H1, H2).",
+   "type": "single",
+   "options": [
+    "own system",
+    "third-party gateway",
+    "none"
+   ]
+  },
+  {
+   "id": "S19",
+   "group": "Legal basis and consent",
+   "question": "For each collection point in S13, what lawful basis does the owner rely on?",
+   "answer_type": "Per collection point: consent / voluntary provision (s.7(a)) / employment (s.7(i)) / legal obligation or order / other",
+   "when": "Ask upfront",
+   "effect": "Consent: apply A and B in full. s.7 bases: apply C1 to C3 and flag for legal review where s.7(a) is claimed for marketing or tracking.",
+   "type": "multi",
+   "options": [
+    "consent",
+    "voluntary provision (s.7(a))",
+    "employment (s.7(i))",
+    "legal obligation or order",
+    "other"
+   ]
+  },
+  {
+   "id": "S20",
+   "group": "Legal basis and consent",
+   "question": "Does the owner hold personal data collected before the commencement date (old mailing lists, user databases)?",
+   "answer_type": "Yes / No",
+   "when": "Ask upfront",
+   "effect": "Yes: switch on A9, a notice to existing users as soon as reasonably practicable.",
+   "type": "single",
+   "options": [
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "id": "S21",
+   "group": "Legal basis and consent",
+   "question": "What does the consent log record?",
+   "answer_type": "Multi-select: user or session ID / timestamp / purposes / notice version / channel / consent withdrawal events / none",
+   "when": "Ask upfront",
+   "effect": "Missing items are listed against B9 as gaps in proof of notice and consent.",
+   "type": "multi",
+   "options": [
+    "user or session ID",
+    "timestamp",
+    "purposes",
+    "notice version",
+    "channel",
+    "consent withdrawal events",
+    "none"
+   ]
+  },
+  {
+   "id": "S22",
+   "group": "Legal basis and consent",
+   "question": "In which languages is the notice available, and does the site serve a regional audience?",
+   "answer_type": "Multi-select of the 22 Eighth Schedule languages + English",
+   "when": "Ask after detection (scanner finds language switcher)",
+   "effect": "Compares with A8. A regional audience raises the weight of A8.",
+   "type": "multi",
+   "options": [
+    "English",
+    "Hindi",
+    "Bengali",
+    "Marathi",
+    "Telugu",
+    "Tamil",
+    "Gujarati",
+    "Urdu",
+    "Kannada",
+    "Odia",
+    "Malayalam",
+    "Punjabi",
+    "Assamese",
+    "Other Eighth Schedule language"
+   ]
+  },
+  {
+   "id": "S23",
+   "group": "Legal basis and consent",
+   "question": "Does the owner already comply with GDPR or another privacy law, and use the same banner and notice for India?",
+   "answer_type": "Yes / No",
+   "when": "Ask upfront",
+   "effect": "Yes: run a difference check. The Act has no 'legitimate interest' basis; its s.7 uses are narrower, so GDPR-style reliance on legitimate interest must be flagged.",
+   "type": "single",
+   "options": [
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "id": "S24",
+   "group": "Legal basis and consent",
+   "question": "Is website data used for email, SMS, WhatsApp or call marketing?",
+   "answer_type": "Yes / No",
+   "when": "Ask after detection (newsletter or marketing opt-in found)",
+   "effect": "Yes: check marketing is a separate, unbundled consent (B3) and that unsubscribe works (B7). Other marketing laws are outside this checklist; flag them.",
+   "type": "single",
+   "options": [
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "id": "S25",
+   "group": "Tracking and third parties",
+   "question": "Does the site embed third-party content such as video, maps, chat, social widgets or hosted fonts?",
+   "answer_type": "Multi-select (scanner pre-fills)",
+   "when": "Ask after detection",
+   "effect": "Adds each provider to H1 and I1 (they may receive IP address and device data on page load).",
+   "type": "multi",
+   "options": [
+    "video",
+    "maps",
+    "chat",
+    "social widgets",
+    "hosted fonts",
+    "none"
+   ]
+  },
+  {
+   "id": "S26",
+   "group": "Tracking and third parties",
+   "question": "Is personal data shared with group companies, partners, advertisers or data brokers, or sold or otherwise monetised?",
+   "answer_type": "Multi-select: group companies / partners / advertisers / data brokers / sold or monetised / none",
+   "when": "Ask upfront",
+   "effect": "Any selection: check the notice names the purpose (A3), consent covers it (B3), H4 applies, and the s.11 access summary can name recipients (E5).",
+   "type": "multi",
+   "options": [
+    "group companies",
+    "partners",
+    "advertisers",
+    "data brokers",
+    "sold or monetised",
+    "none"
+   ]
+  },
+  {
+   "id": "S27",
+   "group": "Tracking and third parties",
+   "question": "Does the site use an AI chatbot, a large language model or automated decisions on user data?",
+   "answer_type": "Yes / No",
+   "when": "Ask after detection (chat widget found)",
+   "effect": "Yes: add the AI vendor as a processor (H2), check accuracy of data used for decisions (H5), and check for overseas transfer (I1).",
+   "type": "single",
+   "options": [
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "id": "S28",
+   "group": "Tracking and third parties",
+   "question": "Is there a written contract with each processor (hosting, CRM, email, analytics, payments, support)?",
+   "answer_type": "Single choice: all / some / none / unknown",
+   "when": "Ask upfront",
+   "effect": "Some, none or unknown: H2 and F7 fail; ask for the contract list as document evidence.",
+   "type": "single",
+   "options": [
+    "all",
+    "some",
+    "none",
+    "unknown"
+   ]
+  },
+  {
+   "id": "S29",
+   "group": "Tracking and third parties",
+   "question": "In which countries are the site, database, backups and vendors hosted?",
+   "answer_type": "Multi-select of countries",
+   "when": "Ask after detection (scanner resolves server and third-party locations)",
+   "effect": "Any non-India location: switch on I1 to I3. Check against any restriction notified under R.15.",
+   "type": "multi",
+   "options": [
+    "India",
+    "United States",
+    "European Union",
+    "United Kingdom",
+    "Singapore",
+    "Other country"
+   ]
+  },
+  {
+   "id": "S30",
+   "group": "Tracking and third parties",
+   "question": "Does any parent, group company or vendor outside India receive personal data from the site?",
+   "answer_type": "Yes / No",
+   "when": "Ask upfront",
+   "effect": "Yes: switch on I2 and I3.",
+   "type": "single",
+   "options": [
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "id": "S31",
+   "group": "Children",
+   "question": "Is the site directed at, or likely to attract, under-18s (edtech, gaming, children's content, school or college)?",
+   "answer_type": "Yes / No / Not sure",
+   "when": "Ask upfront",
+   "effect": "Yes or Not sure: switch on D1 to D6 and test for ad pixels and behavioural tracking (D4).",
+   "type": "single",
+   "options": [
+    "Yes",
+    "No",
+    "Not sure"
+   ]
+  },
+  {
+   "id": "S32",
+   "group": "Children",
+   "question": "Does the site have an age gate or age declaration, and how is a parent's identity and age verified?",
+   "answer_type": "Single choice: none / self-declaration / ID-based check / authorised-entity or Digital Locker token",
+   "when": "Ask after detection (age field or gate found)",
+   "effect": "None or self-declaration alone: D2 fails when children are in scope.",
+   "type": "single",
+   "options": [
+    "none",
+    "self-declaration",
+    "ID-based check",
+    "authorised-entity or Digital Locker token"
+   ]
+  },
+  {
+   "id": "S33",
+   "group": "Children",
+   "question": "Does the owner fall in a Fourth Schedule class?",
+   "answer_type": "Multi-select: clinical or mental health establishment / healthcare or allied healthcare professional / educational institution / crèche or child day care / child transport provider / none",
+   "when": "Ask when S33 or S4 is Yes",
+   "effect": "Selected: show the permitted processing limits and test the owner stays within them (D6).",
+   "type": "multi",
+   "options": [
+    "clinical or mental health establishment",
+    "healthcare or allied healthcare professional",
+    "educational institution",
+    "crèche or child day care",
+    "child transport provider",
+    "none"
+   ]
+  },
+  {
+   "id": "S34",
+   "group": "Children",
+   "question": "Does the site serve persons with disability who act through a lawful guardian?",
+   "answer_type": "Yes / No",
+   "when": "Ask upfront",
+   "effect": "Yes: switch on D3.",
+   "type": "single",
+   "options": [
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "id": "S35",
+   "group": "Rights and governance",
+   "question": "Has the owner appointed a DPO or a designated contact for Data Principals' questions, and is it published?",
+   "answer_type": "Single choice: DPO / designated person / none; Yes / No for published",
+   "when": "Ask upfront",
+   "effect": "None or unpublished: E3 fails. The scanner then checks the notice, footer and rights-request responses.",
+   "type": "single",
+   "options": [
+    "DPO appointed and published",
+    "Designated contact person, published",
+    "DPO or contact exists but is not published",
+    "None"
+   ]
+  },
+  {
+   "id": "S36",
+   "group": "Rights and governance",
+   "question": "Is there a grievance officer or mechanism, and what response time is published?",
+   "answer_type": "Yes / No + days",
+   "when": "Ask upfront",
+   "effect": "No mechanism, or published time over 90 days: E4 fails.",
+   "type": "single",
+   "options": [
+    "Yes, response time is 90 days or less",
+    "Yes, but response time is over 90 days",
+    "Yes, but no response time is published",
+    "No grievance mechanism"
+   ]
+  },
+  {
+   "id": "S37",
+   "group": "Rights and governance",
+   "question": "How are rights requests received and tracked?",
+   "answer_type": "Single choice: dedicated portal / web form / email / phone or manual / none",
+   "when": "Ask upfront",
+   "effect": "None: E1 and E8 fail. Email only or manual: check the published means and that identity verification is described (E2).",
+   "type": "single",
+   "options": [
+    "dedicated portal",
+    "web form",
+    "email",
+    "phone or manual",
+    "none"
+   ]
+  },
+  {
+   "id": "S38",
+   "group": "Rights and governance",
+   "question": "Is there a documented breach response plan covering notice to affected individuals and to the Board within 72 hours?",
+   "answer_type": "Yes / No / Partly",
+   "when": "Ask upfront",
+   "effect": "No or Partly: F10 and F11 open at High weight; ask for the plan as document evidence.",
+   "type": "single",
+   "options": [
+    "Yes",
+    "No",
+    "Partly"
+   ]
+  },
+  {
+   "id": "S39",
+   "group": "Rights and governance",
+   "question": "Has the owner prepared a data inventory or record of processing, and a data protection impact assessment?",
+   "answer_type": "Single choice: both / inventory only / neither",
+   "when": "Ask upfront",
+   "effect": "Neither: K1 and (if S6 is Yes) J4 open.",
+   "type": "single",
+   "options": [
+    "both",
+    "inventory only",
+    "neither"
+   ]
+  },
+  {
+   "id": "S40",
+   "group": "Rights and governance",
+   "question": "Is there a retention schedule, and does it cover website data stores (forms, inbox, CRM, analytics, chat)?",
+   "answer_type": "Single choice: yes, covers all / yes, partly / no",
+   "when": "Ask upfront",
+   "effect": "Partly or no: G1 and G4 open.",
+   "type": "single",
+   "options": [
+    "yes, covers all",
+    "yes, partly",
+    "no"
+   ]
+  },
+  {
+   "id": "S41",
+   "group": "Rights and governance",
+   "question": "Does any other law require longer retention (tax, labour, company law, sector rules)?",
+   "answer_type": "Yes / No + which law",
+   "when": "Ask upfront",
+   "effect": "Yes: record the law against G1 and G3; erasure is then subject to it.",
+   "type": "single",
+   "options": [
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "id": "S42",
+   "group": "Rights and governance",
+   "question": "Which basic safeguards are in place?",
+   "answer_type": "Multi-select: encryption at rest / access control and MFA / access logging and monitoring / backups / one-year log retention / processor contracts with security clauses / none",
+   "when": "Ask upfront",
+   "effect": "Unselected items are listed as gaps against F2 to F7. These cannot be verified from outside; mark as self-declared.",
+   "type": "multi",
+   "options": [
+    "encryption at rest",
+    "access control and MFA",
+    "access logging and monitoring",
+    "backups",
+    "one-year log retention",
+    "processor contracts with security clauses",
+    "none"
+   ]
+  },
+  {
+   "id": "S43",
+   "group": "Rights and governance",
+   "question": "Has the owner received any complaint, Board notice, legal notice or regulator query about personal data?",
+   "answer_type": "Yes / No",
+   "when": "Ask upfront",
+   "effect": "Yes: raise overall risk, ask for details and flag for legal review.",
+   "type": "single",
+   "options": [
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "id": "S44",
+   "group": "Scan set-up",
+   "question": "Are login-protected areas in scope, and can test credentials be provided?",
+   "answer_type": "Yes / No + credentials",
+   "when": "Ask after detection (login found)",
+   "effect": "Yes: run P checks inside the account (withdrawal, rights, nomination). No: mark those checks Not tested, never Compliant.",
+   "type": "single",
+   "options": [
+    "Yes",
+    "No"
+   ]
+  },
+  {
+   "id": "S45",
+   "group": "Scan set-up",
+   "question": "Can the owner upload the privacy notice, cookie policy, processor list, retention schedule, breach plan and sample consent log?",
+   "answer_type": "Upload",
+   "when": "Ask after scan (to close D and Q items)",
+   "effect": "Each uploaded document is checked against the matching D check; items without evidence stay Not evidenced.",
+   "type": "info"
+  }
+ ]
+}
