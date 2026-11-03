@@ -153,14 +153,4 @@
 @media(max-width:760px){.rp-grid3{grid-template-columns:1fr}.rp-cover{padding:26px}.rp-cover h2{font-size:27px}.rp-find-b{padding-left:18px}.rp-cols{grid-template-columns:1fr}
   .rp-find-h{flex-wrap:wrap}.rp-req{flex-basis:calc(100% - 60px)}}
 
-/* print / save as PDF */
-@media print{
-  @page{margin:14mm 12mm}
-  body{background:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  .sidebar,.topbar,footer,.toast,.errorbar,.rp-noprint,.rp-tabs,.page-title,.mobile{display:none!important}
-  .shell{display:block}.content{display:block}.body{max-width:none;padding:0}
-  .rp-card,.rp-find,.rp-sec,.rp-group-h,.rp-fix{break-inside:avoid}
-  .rp-find-b{padding-left:18px}.rp-cols{grid-template-columns:1fr 1fr}
-  .rp-card,.rp-group,.rp-sec{box-shadow:none!important}
-  .rp-cover h2{font-size:26px}
-}
+/* print / save as PDF: see reportPrint.css (ReportDoc.jsx), which replaces this screen layout when printing */
