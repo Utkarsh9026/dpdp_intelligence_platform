@@ -79,7 +79,8 @@ FORM_CAT_MAP = {'email': r'e-?mail', 'phone': r'phone|mobile|\btel\b', 'name': r
 RIGHTS_RX = {
     'access': r'right to access|access (to )?(your |the )?(personal )?(data|information)|(request|obtain|receive) (a )?(copy|summary|access)',
     'correction': r'correct(ion)?\b|rectif|update (your|the) (personal )?(data|information)|complet(e|ion) (of )?(your )?(data|information)',
-    'erasure': r'erasure|erase\b|delet(e|ion)|remov(e|al) (of )?(your )?(personal )?(data|information)',
+    # "delete" alone also matches "delete cookies"; require the object to be the person's data or account
+    'erasure': r'erasure|erase\b|delet(e|ion) (of )?(all |any )?(of )?(your |the )?(personal |account )?(data|information|account|profile|records?)|remov(e|al) (of )?(your )?(personal )?(data|information)',
     'grievance': r'grievance|complain|redress',
     'nomination': r'nominat',
 }
@@ -93,7 +94,16 @@ PURPOSE_RX = r'purposes?\b|we (use|collect|process|share)[^.]{0,100}\b(to|for)\b
 RETENTION_RX = r'retain|retention|stored for|keep (your )?(data|information)|as long as (necessary|required|needed)'
 OVERSEAS_RX = r'outside india|overseas|cross[\s-]?border|international(ly)? (transfer|data)|other countries|transfer(red)? (of )?(your )?(personal )?(data|information)|servers? (are )?(located )?(in|outside)'
 WAIVER_RX = r'\bwaive[sdr]?\b|\bwaiver\b|release[sd]? us from|you (hereby )?agree not to (file|bring|raise|complain)|class[\s-]?action waiver'
-DATE_RX = r'(last (updated|modified|revised)|effective( date| from)?|updated on|version)\s*[:\-]?\s*[\w./ ,-]{3,25}'
+# A date or version must actually follow the keyword. The old pattern accepted any 3-25 characters, so "browser version" or
+# "effective measures" inside unrelated text (device logging, cookies) was reported as the notice's date.
+_DAY_MONTH_YEAR = r'\d{1,2}(?:st|nd|rd|th)?[ ./-]+[A-Za-z]{3,9}\.?,?[ ./-]+\d{2,4}'
+_MONTH_DAY_YEAR = r'[A-Za-z]{3,9}\.? \d{1,2}(?:st|nd|rd|th)?,? \d{4}'
+_NUMERIC_DATE = r'\d{1,2}[./-]\d{1,2}[./-]\d{2,4}|\d{4}[./-]\d{1,2}[./-]\d{1,2}'
+_MONTH_YEAR = r'(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\.? \d{4}'
+DATE_RX = (r'(?:last (?:updated|modified|revised)|effective(?: date| from)?|updated on|revised on|date of (?:last )?(?:update|revision))\s*[:\-–]?\s*(?:'
+           + '|'.join((_DAY_MONTH_YEAR, _MONTH_DAY_YEAR, _NUMERIC_DATE, _MONTH_YEAR)) + r')|\bversion\s*[:\-]?\s*v?\d+(?:\.\d+)*\b')
+# Text around a hit that shows the sentence is about browser storage, not the person's data rights.
+STORAGE_CTX_RX = r'cookie|local storage|session storage|browser (?:setting|history|cache)|clear(?:ing)? (?:your )?(?:browser|cache)|device (?:log|identif)'
 CONSENT_LABEL_RX = r'consent|agree|accept|marketing|newsletter|subscribe|updates|promotion|terms|privacy|contact me|communicat'
 MARKETING_RX = r'marketing|newsletter|promotion|offers?|updates|communicat|subscribe|contact me'
 TERMS_RX = r'terms|privacy|policy|conditions'
@@ -111,12 +121,23 @@ def E(label, detail='', url=None):
     return {'label': label, 'detail': (detail or '')[:420], 'url': url}
 
 
-def snip(rx, text, width=170):
-    m = re.search(rx, text or '', re.I)
-    if not m:
-        return ''
-    a, b = max(0, m.start() - width // 2), min(len(text), m.end() + width // 2)
-    return ('…' if a else '') + re.sub(r'\s+', ' ', text[a:b]).strip() + ('…' if b < len(text) else '')
+def snip(rx, text, width=170, skip=None):
+    """Excerpt around the first match of rx. With skip, hits whose own sentence matches skip are passed over."""
+    text = text or ''
+    for m in re.finditer(rx, text, re.I):
+        if skip:
+            s = max(text.rfind('.', 0, m.start()), text.rfind('\n', 0, m.start())) + 1
+            e = [i for i in (text.find('.', m.end()), text.find('\n', m.end())) if i >= 0]
+            if re.search(skip, text[s:min(e) if e else len(text)], re.I):
+                continue
+        a, b = max(0, m.start() - width // 2), min(len(text), m.end() + width // 2)
+        return ('…' if a else '') + re.sub(r'\s+', ' ', text[a:b]).strip() + ('…' if b < len(text) else '')
+    return ''
+
+
+def rights_snip(key, text):
+    """Excerpt where the notice promises a data right, ignoring sentences that are really about cookies or browser storage."""
+    return snip(RIGHTS_RX[key], text, skip=STORAGE_CTX_RX if key in ('correction', 'erasure') else None)
 
 
 def host_of(u):
@@ -368,7 +389,7 @@ def a6(c):
     g = notice_gate(c, 'a rights description')
     if g:
         return g
-    found = {k: snip(rx, c.notice_text) for k, rx in RIGHTS_RX.items() if re.search(rx, c.notice_text, re.I)}
+    found = {k: s for k in RIGHTS_RX if (s := rights_snip(k, c.notice_text))}
     missing = [k for k in RIGHTS_RX if k not in found]
     ev = [E(f'Mentions {k}', s, c.notice_url) for k, s in found.items()]
     if not missing:
@@ -841,7 +862,7 @@ def _from_s36(c, v):
 @rule('E5')
 def e5(c):
     ev = []
-    q = snip(RIGHTS_RX['access'], c.notice_text)
+    q = rights_snip('access', c.notice_text)
     if q:
         ev.append(E('Notice promises access', q, c.notice_url))
     return r('not_testable', 'Internal: you must be able to give a summary of data processed and the other fiduciaries/processors it is shared with. Describe the process.', ev, ['S26'])
@@ -849,7 +870,7 @@ def e5(c):
 
 @rule('E6')
 def e6(c):
-    ev = [E(f'Notice promises {k}', snip(RIGHTS_RX[k], c.notice_text), c.notice_url) for k in ('correction', 'erasure') if re.search(RIGHTS_RX[k], c.notice_text, re.I)]
+    ev = [E(f'Notice promises {k}', s, c.notice_url) for k in ('correction', 'erasure') if (s := rights_snip(k, c.notice_text))]
     return r('not_testable', 'Internal: correction, completion, updating and erasure on request. Describe the process and attach a sample request log.', ev)
 
 
@@ -1350,4 +1371,7 @@ def evaluate(scan, scope=None, declarations=None, docs=None):
 
     return {'results': results, 'summary': summary, 'questions': questions, 'flags': flags,
             'sections': DATA['sections'], 'mode': c.mode, 'pages_scanned': len(c.pages), 'target': scan.get('target'),
-            'notice_url': c.notice_url, 'caveats': scan.get('caveats', [])}
+            'notice_url': c.notice_url, 'caveats': scan.get('caveats', []),
+            # appendix of the printed report: what was read and which outside hosts the site talks to
+            'pages': [{'url': p.get('url'), 'title': (p.get('title') or '')[:90], 'kind': p.get('kind')} for p in c.pages],
+            'third_parties': [{'host': h, 'category': c.cat[h]} for h in sorted(c.hosts, key=lambda x: (c.cat[x] == 'other', c.cat[x], x))]}

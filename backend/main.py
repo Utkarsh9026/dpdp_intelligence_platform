@@ -2,7 +2,7 @@ import os, json, uuid, hashlib, hmac, secrets, datetime, io, csv, ipaddress, url
 from pathlib import Path
 from contextlib import asynccontextmanager
 from typing import Optional, Any
-from fastapi import FastAPI, Depends, HTTPException, Header, UploadFile, File
+from fastapi import FastAPI, Depends, HTTPException, Header, UploadFile, File, Request
 from fastapi.responses import Response
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import create_engine, Column, String, Text, DateTime, ForeignKey, Integer, UniqueConstraint, select, func
@@ -97,6 +97,41 @@ class AIReq(BaseModel):provider:str;model:str;question:str;api_key:Optional[str]
 class Invite(BaseModel):email:str;role:str='viewer'
 @app.get('/api/health')
 def health():return {'status':'ok'}
+# ---- Public website score (no login). Returns the headline numbers only; findings, evidence and fixes need an account.
+PUBLIC_SCANS_PER_HOUR=int(os.getenv('PUBLIC_SCANS_PER_HOUR','3'))  # per visitor IP; 0 turns the limit off
+PUBLIC_SLOTS=threading.BoundedSemaphore(max(1,int(os.getenv('PUBLIC_SCAN_SLOTS','2'))))  # scans running at once, per API worker
+class PublicScanReq(BaseModel):url:str
+def visitor_key(request):
+ """Salted hash of the visitor IP, so the rate limit works without storing the address itself."""
+ ip=request.client.host if request.client else ''
+ if ip in ('127.0.0.1','::1'):ip=request.headers.get('x-real-ip') or ip  # behind the local Nginx proxy
+ return hashlib.sha256((SECRET+'|'+ip).encode()).hexdigest()[:24]
+@app.post('/api/public/scan')
+def public_scan(v:PublicScanReq,request:Request,s:Session=Depends(db)):
+ url=v.url.strip()
+ if not url or len(url)>500:raise HTTPException(400,'Enter a website address')
+ if not url.startswith(('https://','http://')):url='https://'+url
+ who=visitor_key(request)
+ if PUBLIC_SCANS_PER_HOUR>0:
+  used=s.scalar(select(func.count()).select_from(AuditEvent).where(AuditEvent.action=='public.scan',AuditEvent.user_id==who,AuditEvent.created>now()-datetime.timedelta(hours=1)))
+  if used>=PUBLIC_SCANS_PER_HOUR:raise HTTPException(429,'You have reached the limit of free checks for now. Please try again in an hour, or create an account.')
+ if not PUBLIC_SLOTS.acquire(blocking=False):raise HTTPException(503,'The scanner is busy right now. Please try again in a minute.')
+ try:
+  host=(urllib.parse.urlsplit(url).hostname or '').removeprefix('www.')
+  s.add(AuditEvent(user_id=who,action='public.scan',details=json.dumps({'host':host})));s.commit()
+  try:result=scan(url,int(os.getenv('SCAN_MAX_PAGES','10')))
+  except ValueError as e:raise HTTPException(400,'That address cannot be checked: '+str(e)[:200])
+  except Exception as e:raise HTTPException(502,'The check could not be completed: '+str(e)[:200])
+ finally:PUBLIC_SLOTS.release()
+ if not result['pages']:
+  err=next((f['detail'] for f in result['findings'] if f['type']=='fetch_error'),'The site could not be loaded.')
+  raise HTTPException(422,'Could not load the website: '+err[:240])
+ out=assess.evaluate(result);c=out['summary']['counts'];observed=c['met']+c['not_met']
+ # same arithmetic as the in-app report (rounded half up), so the number matches after login
+ return {'host':host,'scanned':now().isoformat(),'pages':out['pages_scanned'],'observed':observed,'met':c['met'],
+  'percent':(200*c['met']+observed)//(2*observed) if observed else None,
+  'gaps':c['not_met']+c['declared_gap'],'review':c['review'],'open':c['input']+c['not_testable'],'passed':c['met']+c['declared_met'],
+  'unsettled':out['summary']['total']-observed-c['na']}
 @app.post('/api/auth/register')
 def register(v:Register,s:Session=Depends(db)):
  email=v.email.strip().lower()
@@ -208,15 +243,63 @@ def web_context(org,s):
  for e in s.scalars(select(Evidence).where(Evidence.org_id==org,Evidence.control_id.like('WEB:%'))):
   cid=e.control_id[4:];docs[cid]=docs.get(cid,0)+1;files.setdefault(cid,[]).append({'id':e.id,'filename':e.filename,'sha256':e.sha256,'bytes':e.bytes})
  return scope,decls,docs,files
-@app.get('/api/orgs/{org}/scans/{sid}/assessment')
-def scan_assessment(org:str,sid:str,u:User=Depends(current),s:Session=Depends(db)):
- access(org,u,s);x=get_scan(org,sid,s);v=scan_view(x)
+def build_assessment(org,sid,s):
+ x=get_scan(org,sid,s);v=scan_view(x)
  if v['status']!='done':raise HTTPException(409,'The scan has not finished')
  res=scan_payload(json.loads(x.result))
  if not res or not res.get('evidence'):raise HTTPException(400,'This scan was run before the website checklist existed. Run a new scan.')
  scope,decls,docs,files=web_context(org,s)
  out=assess.evaluate(res,scope,decls,docs);out['documents']=files;out['scan']={'id':x.id,'target':x.target,'created':x.created.isoformat(),'mode':res.get('mode')}
+ # Identity of this printed report: the ID names the scan, the hash fingerprints every status and note in it,
+ # so a PDF a client keeps can be checked against what the portal shows later.
+ body=json.dumps([[r['id'],r['status'],r['note']] for r in out['results']],separators=(',',':'),ensure_ascii=False)
+ digest=hashlib.sha256((x.id+x.created.isoformat()+body).encode()).hexdigest()
+ o=s.get(Org,org)
+ out['report']={'id':'VR-'+x.created.strftime('%Y%m%d')+'-'+x.id[:6].upper(),'hash':digest,'client':o.name if o else '','generated':now().isoformat()}
  return out
+@app.get('/api/orgs/{org}/scans/{sid}/assessment')
+def scan_assessment(org:str,sid:str,u:User=Depends(current),s:Session=Depends(db)):
+ access(org,u,s);return build_assessment(org,sid,s)
+PDF_SLOTS=threading.Semaphore(2)  # Chromium is heavy; never render more than two PDFs at once
+def public_app_url():
+ return (os.getenv('PUBLIC_APP_URL') or origins[0]).rstrip('/')
+@app.get('/api/orgs/{org}/scans/{sid}/report.pdf')
+def scan_report_pdf(org:str,sid:str,u:User=Depends(current),s:Session=Depends(db)):
+ """Branded A4 PDF of the website report. The print layout lives in the frontend (route /report/<org>/<scan>/print);
+ headless Chromium renders it, so every user gets identical output with no browser header or footer."""
+ access(org,u,s);a=build_assessment(org,sid,s)
+ rep=a['report']
+ short=lambda t:(t or '')[:60]
+ host=urllib.parse.urlsplit(a['scan']['target'] if '://' in (a['scan']['target'] or '') else 'https://'+(a['scan']['target'] or '')).hostname or 'website'
+ host=host.removeprefix('www.')
+ # short-lived token so the headless browser can load the print route as this user, and nothing more
+ tok=jwt.encode({'sub':u.id,'exp':now()+datetime.timedelta(minutes=3)},SECRET,algorithm='HS256')
+ url=f'{public_app_url()}/report/{org}/{sid}/print?pdf=1'
+ footer=('<div style="font-size:8px;width:100%;padding:0 14mm;display:flex;justify-content:space-between;color:#94a3b8;font-family:Segoe UI,Arial,sans-serif">'
+  f'<span>Verity by Elevatics AI &middot; {short(host)} &middot; DPDP Report &middot; {rep["id"]} &middot; SHA-256 {rep["hash"][:12]}</span>'
+  '<span>Page <span class="pageNumber"></span> of <span class="totalPages"></span></span></div>')
+ if not PDF_SLOTS.acquire(timeout=30):raise HTTPException(503,'The PDF renderer is busy. Try again in a moment.')
+ try:
+  from playwright.sync_api import sync_playwright,Error as PlaywrightError
+  with sync_playwright() as pw:
+   try:browser=pw.chromium.launch(headless=True)
+   except PlaywrightError as e:raise HTTPException(503,'PDF rendering needs Chromium on the server (run: python -m playwright install chromium). '+str(e).split('\n')[0][:160])
+   try:
+    ctx=browser.new_context(viewport={'width':1100,'height':1400},locale='en-IN')
+    ctx.add_init_script(f"sessionStorage.setItem('dpdp-token',{json.dumps(tok)})")
+    page=ctx.new_page()
+    page.goto(url,wait_until='networkidle',timeout=45000)
+    page.wait_for_selector('[data-report-ready="true"]',timeout=30000)
+    page.evaluate('document.fonts.ready')
+    page.emulate_media(media='print')
+    pdf=page.pdf(format='A4',print_background=True,display_header_footer=True,header_template='<div></div>',footer_template=footer,
+     margin={'top':'14mm','bottom':'16mm','left':'14mm','right':'14mm'})
+   finally:browser.close()
+ except HTTPException:raise
+ except Exception as e:raise HTTPException(502,'Could not render the PDF: '+str(e)[:200])
+ finally:PDF_SLOTS.release()
+ log(s,org,u,'report.pdf',{'scan':sid,'report':rep['id']});s.commit()
+ return Response(pdf,media_type='application/pdf',headers={'Content-Disposition':f'attachment; filename="dpdp-report-{host}-{rep["id"]}.pdf"'})
 class ScopeReq(BaseModel):value:Any=None
 class WebCheckReq(BaseModel):status:str;note:str=''
 @app.put('/api/orgs/{org}/scope/{qid}')
